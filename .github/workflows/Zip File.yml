@@ -14,7 +14,7 @@ jobs:
           dest: ./Pack.zip # eventually this will be in RoDoors/TexturePack=
       - name: Commit files # transfer the new html files back into the repository
         run: |
-          git config --local user.name "ZipFileBot"
+          git config --local user.name "GStudiosX"
           git add ./Pack.zip
           git commit -m "Update Pack.zip"
       - name: Push changes # push the output folder to your repo
