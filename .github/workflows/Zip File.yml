@@ -20,5 +20,5 @@ jobs:
           git commit -m "Update"
       - name: Push
         run: |
-          git config --local github.token ${{ secrets.token }}
+          git config --local github.token ${{ GITHUB_TOKEN }}
           git push
