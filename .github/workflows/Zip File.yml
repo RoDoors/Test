@@ -14,6 +14,7 @@ jobs:
         with:
           files: test.md test.txt test/
           dest: ./build/Pack.zip # eventually this will be in RoDoors/TexturePack
+          recursive: true
       - name: Update hash.txt
         run: |
           sha1sum ./build/Pack.zip > ./build/hash.txt
@@ -22,5 +23,7 @@ jobs:
           git config --global user.email "githubactions@github.com"
           git config --global user.name "Github-Actions[bot]"
           git status
-          git commit -a -m "Update"
+          git add ./build/Pack.zip
+          git add ./build/hash.txt
+          git commit -m "Update"
           git push origin main
