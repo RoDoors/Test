@@ -11,11 +11,11 @@ jobs:
       - uses: vimtor/action-zip@v1
         with:
           files: test.md test.txt test/
-          dest: ${{ github.workspace }}/Pack.zip # eventually this will be in RoDoors/TexturePack=
+          dest: ./Pack.zip # eventually this will be in RoDoors/TexturePack=
       - name: Commit files # transfer the new html files back into the repository
         run: |
           git config --local user.name "ZipFileBot"
-          git add ${{ github.workspace }}/Pack.zip
+          git add ./Pack.zip
           git commit -m "Update Pack.zip"
       - name: Push changes # push the output folder to your repo
         uses: ad-m/github-push-action@master
