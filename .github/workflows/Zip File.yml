@@ -14,8 +14,6 @@ jobs:
         with:
           files: test.md test.txt test/
           dest: ./build/Pack.zip # eventually this will be in RoDoors/TexturePack
-      - name: switching from HTTPS to SSH
-        run: git remote set-url --push origin ${{ secrets.ssh }}
       - name: check for changes
         run: git status
       - name: stage changed files
