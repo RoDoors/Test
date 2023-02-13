@@ -11,22 +11,14 @@ jobs:
       - uses: vimtor/action-zip@v1
         with:
           files: test.md test.txt test/
-          dest: ./Pack.zip # eventually this will be in RoDoors/TexturePack
-#       - name: Commit files
-#         run: |
-#           git config --local user.name "GStudiosX"
-#           git config --local user.email "gstudiosx@github.com"
-#           git add ./Pack.zip
-#           git commit -m "Update Pack.zip"
-      - name: Pushes to Repository
-        uses: tech-thinker/push-to-repo@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.token }}
-        with:
-          user-name: "github-actions[bot]"
-          user-email: github-actions[bot]@users.noreply.github.com
-          source-directory: "./build/"
-          destination-github-username: "RoDoors"
-          destination-repository-name: "Test"
-          target-branch: main
-          
+          dest: ./build/Pack.zip # eventually this will be in RoDoors/TexturePack
+      - name: Commit Files
+        run: |
+          git config --local user.name "Github-Actions[bot]"
+          git config --local user.email "actions@github.com"
+          git add ./build
+          git commit -m "Update"
+      - name: Push
+        run: |
+          git config --global github.token ${{ secrets.token }}
+          git push origin main
