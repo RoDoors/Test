@@ -12,18 +12,21 @@ jobs:
         with:
           files: test.md test.txt test/
           dest: ./Pack.zip # eventually this will be in RoDoors/TexturePack
-      #- name: Commit files
-      #  run: |
-      #    git config --local user.name "GStudiosX"
-      #    git add ./Pack.zip
-      #    git commit -m 
-      - name: A
-        run: |
-          git config --global --add safe.directory /github/workspace
-      - name: Push changes # push the output file to your repo
-        uses: ludeeus/action-push@0.0.1
+#       - name: Commit files
+#         run: |
+#           git config --local user.name "GStudiosX"
+#           git config --local user.email "gstudiosx@github.com"
+#           git add ./Pack.zip
+#           git commit -m "Update Pack.zip"
+      - name: Pushes to Repository
+        uses: tech-thinker/push-to-repo@main
         env:
-          ACTION_MESSAGE: "Update Pack.zip"
-          ACTION_MAIL: "gstudiosx@github.com"
-          ACTION_NAME: "GStudiosX"
-          ACTION_BRANCH: "main"
+          API_TOKEN_GITHUB: ${{ secrets.token }}
+        with:
+          user-name: "github-actions[bot]"
+          user-email: github-actions[bot]@users.noreply.github.com
+          source-directory: "./build/"
+          destination-github-username: "RoDoors"
+          destination-repository-name: "Test"
+          target-branch: main
+          
