@@ -22,6 +22,5 @@ jobs:
           git config --global user.email "githubactions@github.com"
           git config --global user.name "Github-Actions[bot]"
           git status
-          git add ./build/Pack.zip
-          git commit -m "Update"
+          git commit -a -m "Update"
           git push origin main
