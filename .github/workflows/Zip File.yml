@@ -17,6 +17,9 @@ jobs:
       #    git config --local user.name "GStudiosX"
       #    git add ./Pack.zip
       #    git commit -m 
+      - name: A
+        run: |
+          git config --global --add safe.directory /github/workspace
       - name: Push changes # push the output file to your repo
         uses: ludeeus/action-push@0.0.1
         env:
