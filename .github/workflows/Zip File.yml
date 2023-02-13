@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: vimtor/action-zip@v1
         with:
           files: test.md test.txt test/
@@ -15,11 +17,11 @@ jobs:
       - name: Commit Files
         run: |
           git config --local user.name "Github-Actions[bot]"
-          git config --local user.email "actions@github.com"
-          git config --local github.token ${{ secrets.GITHUB_TOKEN }}
-          
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ./build
           git commit -m "Update"
-      - name: Push
-        run: |
-          git push
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
